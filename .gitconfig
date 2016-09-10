@@ -1,0 +1,16 @@
+[user]
+	name = Jason Cemra
+	email = cemrajc@users.noreply.github.com
+[core]
+	autocrlf = true
+	editor = vim
+[alias]
+	logp = log --decorate --all --oneline --graph
+	logb = log --decorate -n 10 --oneline --graph --all
+	statuss = status -s
+[push]
+	default = simple
+[http]
+	proxy = http://proxy1.ap.webscanningservice.com:3128
+[https]
+	proxy = http://proxy1.ap.webscanningservice.com:3128

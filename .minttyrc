@@ -1,0 +1,10 @@
+Transparency=low
+Columns=133
+Rows=39
+ScrollbackLines=100000
+BoldAsFont=no
+Term=xterm-256color
+Font=Consolas
+Locale=C
+Charset=UTF-8
+OpaqueWhenFocused=yes
