@@ -8,3 +8,4 @@ Font=Consolas
 Locale=C
 Charset=UTF-8
 OpaqueWhenFocused=yes
+CursorType=block

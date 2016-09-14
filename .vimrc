@@ -1,7 +1,7 @@
 " Some good defaults
 filetype indent plugin on   " Handle different file types
 set nocompatible                " vi compatible is LAME
-set mouse=a                     " Hardly would use this, but is good for reading
+" set mouse=a                     " Hardly would use this, but is good for reading
 set background=dark             " Use colours that work well on a dark background (Console is usually black)
 set encoding=utf-8 nobomb
 set ttyfast
@@ -24,15 +24,15 @@ endif
 syntax on                   " turn syntax highlighting on by default
 set list                    " Show them invisible Characters
 set listchars=tab:>.,trail:·
-set cursorline              " Highlight the current line we're on        
+set cursorline              " Highlight the current line we're on
 set nostartofline           " Stops the cursor from resetting to the start of the line when paging
 
 " Visual mode mapping for multi-cursor emulation
 vnoremap . :normal .<cr>
 
 " Indentation settings
-set smartindent
 set autoindent
+" set smartindent
 set expandtab
 set cindent                     " set auto-indenting on for programming
 set tabstop=4
@@ -46,8 +46,8 @@ if has('autocmd')
     autocmd FileType c,cpp,java,php,ruby,python,javascript,html,csv,xml,ahk,json autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
     autocmd FileType text setlocal filetype=markdown " I like the syntax highlighting
     autocmd FileType markdown setlocal textwidth=80
-    autocmd FileType make setlocal tabstop = 8 shiftwidth=8 softtabstop=0 noexpandtab
-    autocmd FileType html setlocal tabstop = 2 shiftwidth=2 | set listchars-=tab:>
+    autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType html setlocal tabstop=2 shiftwidth=2 | set listchars-=tab:>
 endif
 " imap <C-Return> <CR><CR><C-o>k<Tab>
 
@@ -60,8 +60,9 @@ set clipboard=unnamed           " set clipboard to unnamed to access the system 
 
 " Opening a file quickly (wouldn't think it was hard, would you?)
 command! -bang -nargs=* E :call E(<q-bang>, <q-args>)
-" Lazy shifting to save keystrokes when using Ex mode
-nnoremap ; :
+" Long-line wrap jumping
+nnoremap j gj
+nnoremap k gk
 
 function! E(bang, filename)
     let filename = a:filename
@@ -113,6 +114,15 @@ endif
 
 " Custom plugins
 set shell=/bin/bash
+Plugin 'rhysd/committia.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'KabbAmine/vCoolor.vim'
+    let g:vcoolor_custom_picker = '~/.vim/bundle/vCoolor.vim/pickers/win32/cpicker.exe '
+    let g:vcoolor_map = '<Leader>CC'
+    let g:vcool_ins_rgb_map = '<Leader>CR'
+    let g:vcool_ins_hsl_map = '<Leader>CH'
+    let g:vcool_ins_rgba_map = '<Leader>CA'
+Plugin 'low-ghost/nerdtree-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
     set wildignore+=*node_modules/*
     set wildignore+=*.git/*
@@ -144,8 +154,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-obsession'
     " let sessionoptions = "blank,buffers,curdir,folds,globals,help,options,resize,tabpages,winpos,winsize"
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-    let vim_markdown_preview_hotkey = '<leader>m'
 Plugin 'unblevable/quick-scope'
 Plugin 'ervandew/supertab'
     let g:SuperTabMappingForward = '<nul>'
@@ -153,7 +161,6 @@ Plugin 'ervandew/supertab'
     let g:SuperTabSetDefaultCompletionType = 'context'
     let g:SuperTabClosePreviewOnPopupClose = 1
 Plugin 'kshenoy/vim-signature'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'junegunn/vim-easy-align'
@@ -161,6 +168,7 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+    let g:vim_markdown_folding_disabled = 1
 Plugin 'mbbill/undotree'
     set history=1000
     set undolevels=1000

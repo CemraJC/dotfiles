@@ -26,9 +26,9 @@ cd $dir
 printf " ...done\n"
 
 for file in $files; do
-    printf "%s %s" "Creating symlink for" $file
-    ln -s $dir/.$file ~/.$file
+    printf "%s %s" "Creating hard link for" $file
+    ln $dir/.$file ~/.$file
     printf " ...done\n"
 done
 
-printf "Symlinking Complete!"
+printf "Linking Complete!"
