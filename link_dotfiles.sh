@@ -16,19 +16,27 @@ files="bashrc bash_profile gitconfig minttyrc npmrc vimrc wgetrc ssh/config"
 printf "%s %s" "Creating backups in" $olddir
 mkdir -p $olddir
 for file in $files; do
-    mv ~/.$file ~/dotfiles_old/ > /dev/null
+    mv $dir/.$file $olddir > /dev/null
 done
 printf " ...done\n"
+
+# Make copies
+for file in $files; do
+    printf "Copying $file..."
+    cp -f ~/.$file $dir/.$file > /dev/null
+    printf " done\n"
+done
+printf " Copying Complete\n"
 
 # Make the symlinks
-printf "%s %s" "Moving into" $dir
-cd $dir
-printf " ...done\n"
+# printf "%s %s" "Moving into" $dir
+# cd $dir
+# printf " ...done\n"
 
-for file in $files; do
-    printf "%s %s" "Creating hard link for" $file
-    ln $dir/.$file ~/.$file
-    printf " ...done\n"
-done
+# for file in $files; do
+#     printf "%s %s" "Creating hard link for" $file
+#     ln $dir/.$file ~/.$file
+#     printf " ...done\n"
+# done
 
-printf "Linking Complete!"
+# printf "Linking Complete!"

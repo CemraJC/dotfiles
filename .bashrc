@@ -55,6 +55,7 @@ cd
 # Youtube - Get (ytg)
 alias ytg="youtube-dl.exe -f 18 -i"
 alias lynda-dl="youtube-dl.exe -f 2-360 -i -u ParkerPenn -p A7eL910H"
+alias vims="vim -S ~/.vim/session.vim"
 
 # Interactive operation...
 alias rm='rm -i'

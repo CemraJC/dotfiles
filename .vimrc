@@ -42,14 +42,14 @@ set scrolloff=6                 " Scrollthrough when reaching a horizontal borde
 
 " Commands to run for specific file types, in order of scope
 if has('autocmd')
-    autocmd VimEnter * silent! Obsession ~/.vim/
+    " autocmd VimEnter * silent! Obsession ~/.vim/
+    " echo "Hit <Leader>] to start recording session."
     autocmd FileType c,cpp,java,php,ruby,python,javascript,html,csv,xml,ahk,json autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
     autocmd FileType text setlocal filetype=markdown " I like the syntax highlighting
     autocmd FileType markdown setlocal textwidth=80
     autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
     autocmd FileType html setlocal tabstop=2 shiftwidth=2 | set listchars-=tab:>
 endif
-" imap <C-Return> <CR><CR><C-o>k<Tab>
 
 " Other WINDOWS specific settings
 set noshowmatch                 " Never, ever do this - it's sooo annoying!
@@ -162,6 +162,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-obsession'
     " let sessionoptions = "blank,buffers,curdir,folds,globals,help,options,resize,tabpages,winpos,winsize"
+    nnoremap <Leader>] <Esc>:Obsession ~/.vim/session.vim<CR>
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'unblevable/quick-scope'
 Plugin 'ervandew/supertab'
