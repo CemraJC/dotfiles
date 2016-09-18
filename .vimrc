@@ -1,17 +1,22 @@
 " Some good defaults
-filetype indent plugin on   " Handle different file types
-set nocompatible                " vi compatible is LAME
-" set mouse=a                     " Hardly would use this, but is good for reading
-set background=dark             " Use colours that work well on a dark background (Console is usually black)
+filetype indent plugin on       " Handle different file types
+syntax on                       " Turn syntax highlighting on by default
+set nocompatible
+set background=dark
 set encoding=utf-8 nobomb
 set ttyfast
-set showmode                    " show the current mode
-set showcmd
-set hidden
+set showmode                    " Show the current mode (Insert, Visual - etc)
+set showcmd                     " Show partial commands as you type them
 set wildmenu
 set title                       " Set filename as the window title
+set hidden                      " Allow buffers to be hidden when not viewing them (allows for bufferline)
+set laststatus=2                " make the last line where the status is two lines deep so you can see status always
+set backspace=indent,eol,start  " Make that backspace key work the way it should
+set number                      " Always show line numbers
+set ruler                       " Show the cursor position all the time
 
-" Fix the annoying mode-switch delay
+" Fix the annoying mode-switch delay that would otherwise happen because Esc
+" is apparently a command leader in visual mode.
 set timeoutlen=1000
 set ttimeoutlen=10
 
@@ -21,10 +26,10 @@ if exists("&undodir")
     set undodir=~/.vim/undo
 endif
 
-syntax on                   " turn syntax highlighting on by default
 set list                    " Show them invisible Characters
 set listchars=tab:>.,trail:·
 set cursorline              " Highlight the current line we're on
+set scrolloff=6             " Scrollthrough when reaching a horizontal border to the window
 set nostartofline           " Stops the cursor from resetting to the start of the line when paging
 
 " Visual mode mapping for multi-cursor emulation
@@ -32,18 +37,15 @@ vnoremap . :normal .<cr>
 
 " Indentation settings
 set autoindent
-" set smartindent
 set expandtab
-set cindent                     " set auto-indenting on for programming
+set cindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set scrolloff=6                 " Scrollthrough when reaching a horizontal border to the window
+
 
 " Commands to run for specific file types, in order of scope
 if has('autocmd')
-    " autocmd VimEnter * silent! Obsession ~/.vim/
-    " echo "Hit <Leader>] to start recording session."
     autocmd FileType c,cpp,java,php,ruby,python,javascript,html,csv,xml,ahk,json autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
     autocmd FileType text setlocal filetype=markdown " I like the syntax highlighting
     autocmd FileType markdown setlocal textwidth=80
@@ -54,15 +56,10 @@ endif
 " Other WINDOWS specific settings
 set noshowmatch                 " Never, ever do this - it's sooo annoying!
 set vb                          " turn on the "visual bell" - which is much quieter than the "audio blink"
-set laststatus=2                " make the last line where the status is two lines deep so you can see status always
-set backspace=indent,eol,start  " make that backspace key work the way it should
 set clipboard=unnamed           " set clipboard to unnamed to access the system clipboard under windows
 
 " Opening a file quickly (wouldn't think it was hard, would you?)
 command! -bang -nargs=* E :call E(<q-bang>, <q-args>)
-" Long-line wrap jumping
-nnoremap j gj
-nnoremap k gk
 
 function! E(bang, filename)
     let filename = a:filename
@@ -82,35 +79,34 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 
 " Search settings
-" set hlsearch  " This is a bit annoying.
-" nnoremap <leader>c <Esc>:nohlsearch<CR>
 set incsearch
 set ignorecase
 set smartcase
+    " set hlsearch  " This is a bit annoying.
+    " nnoremap <leader>c <Esc>:nohlsearch<CR>
 
-" CUSTOM SHORTCUTS
+" Spell check toggler
 nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
+" Quick tabbing
 nnoremap <S-Tab> :bn<CR>
+" Open a padded newline (useful for neatness)
 nnoremap <Leader>o o<Esc>kO<Esc>ji
-" Set Line numbers and relativenumber
-set number          " Always show line numbers
-" set relativenumber        " Numbers relative to cursor
-set ruler                       " show the cursor position all the time
 
-"
+" Long-line wrap jumping
+nnoremap j gj
+nnoremap k gk
+
+
 " Mostly just Vundle stuff for plugins
-"
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
+" REQUIRED
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 if &t_Co >= 256
     colorscheme ubaryd
 endif
+" END REQUIRED
 
 " Custom plugins
 set shell=/bin/bash
@@ -188,5 +184,5 @@ Plugin 'mbbill/undotree'
         set undofile
     endif
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
