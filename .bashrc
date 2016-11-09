@@ -30,6 +30,7 @@ if [[ ! $(echo $PATH | grep ruby) ]]; then
     PATH="/vanilla:$HOME/bin/node/:$PATH"
     PATH="$HOME/bin/cmake-3.4.0-win32-x86/bin:$PATH"
     PATH="$HOME/bin:$PATH"
+    PATH="$PATH:./node_modules/.bin" # Allows downloaded mosules to be run from root.
 
     # MARKDOWN, PYTHON AND LATEX
     PATH="$ROOTNAME_TPDEV/Pandoc/:$ROOTNAME_TPDEV/MikTeX/miktex/bin:$ROOTNAME_TPDEV/MikTeX/SumatraPDF:$ROOTNAME_TPDEV/WinPython-32bit-3.4.3.5/python-3.4.3:$PATH"
@@ -47,6 +48,7 @@ alias sch='cd "J:\Documents\BSDE"'
 alias msl='time "J:\The Files\The Software Files\Projects\Learn\LearnC++\MagicSquarer\runmagic.exe"'
 
 alias gulp="gulp --color"
+alias npm="yarn" # I'm giving it a go
 
 # Turn proxy on by default
 lprx

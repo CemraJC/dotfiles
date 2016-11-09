@@ -15,6 +15,11 @@ set backspace=indent,eol,start  " Make that backspace key work the way it should
 set number                      " Always show line numbers
 set ruler                       " Show the cursor position all the time
 
+" Enable some useful inbuilt packages
+packadd! matchit
+packadd! shellmenu
+" packadd! editexisting " Doesn't work on windows :'(
+
 " Fix the annoying mode-switch delay that would otherwise happen because Esc
 " is apparently a command leader in visual mode.
 set timeoutlen=1000
@@ -156,6 +161,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-obsession'
     " let sessionoptions = "blank,buffers,curdir,folds,globals,help,options,resize,tabpages,winpos,winsize"
     nnoremap <Leader>] <Esc>:Obsession ~/.vim/session.vim<CR>
@@ -169,6 +175,7 @@ Plugin 'ervandew/supertab'
 Plugin 'kshenoy/vim-signature'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'iamcco/markdown-preview.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'Townk/vim-autoclose'
 Plugin 'mattn/emmet-vim'
