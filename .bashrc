@@ -48,7 +48,6 @@ alias sch='cd "J:\Documents\BSDE"'
 alias msl='time "J:\The Files\The Software Files\Projects\Learn\LearnC++\MagicSquarer\runmagic.exe"'
 
 alias gulp="gulp --color"
-alias npm="yarn" # I'm giving it a go
 
 # Turn proxy on by default
 lprx
